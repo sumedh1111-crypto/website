@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumedh - Personal Portfolio</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0a192f',
+                            light: '#112240',
+                            lighter: '#233554'
+                        },
+                        orange: {
+                            DEFAULT: '#ff8a00',
+                            hover: '#e07900'
+                        },
+                        slate: {
+                            DEFAULT: '#8892b0',
+                            light: '#a8b2d1',
+                            lighter: '#ccd6f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Scrollbar */
+        body {
+            background-color: #0a192f;
+            color: #8892b0;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a192f; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #233554; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8a00; 
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #ff8a00;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Card Hover Effects */
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(255, 138, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate text-lg leading-relaxed selection:bg-orange selection:text-navy">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-navy/90 backdrop-blur-sm border-b border-navy-lighter transition-all duration-300 py-4" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-12">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-orange tracking-tighter">&lt;Sumedh/&gt;</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-slate-lighter hover:text-orange nav-link text-sm font-semibold tracking-wide">About</a>
+                    <a href="#skills" class="text-slate-lighter hover:text-orange nav-link text-sm font-semibold tracking-wide">Skills</a>
+                    <a href="#projects" class="text-slate-lighter hover:text-orange nav-link text-sm font-semibold tracking-wide">Projects</a>
+                    <a href="#contact" class="px-5 py-2.5 border-2 border-orange text-orange hover:bg-orange hover:text-navy rounded-md font-semibold transition-all duration-300 text-sm">Contact Me</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-lighter hover:text-orange focus:outline-none transition-colors">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden hidden bg-navy-light border-b border-navy-lighter">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col items-center shadow-lg">
+                <a href="#about" class="block w-full text-center px-3 py-3 text-base font-semibold text-slate-lighter hover:text-orange hover:bg-navy-lighter rounded-md transition-colors mobile-link">About</a>
+                <a href="#skills" class="block w-full text-center px-3 py-3 text-base font-semibold text-slate-lighter hover:text-orange hover:bg-navy-lighter rounded-md transition-colors mobile-link">Skills</a>
+                <a href="#projects" class="block w-full text-center px-3 py-3 text-base font-semibold text-slate-lighter hover:text-orange hover:bg-navy-lighter rounded-md transition-colors mobile-link">Projects</a>
+                <a href="#contact" class="block w-full text-center px-3 py-3 text-base font-semibold text-orange border border-orange hover:bg-orange hover:text-navy rounded-md transition-colors mt-4 mobile-link">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / About Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto w-full">
+            <p class="text-orange font-semibold mb-5 tracking-wide">Hi, I'm</p>
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-slate-lighter mb-4 tracking-tight">Sumedh.</h1>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate mb-6 leading-tight">A CSE (AI/ML) student building the future.</h2>
+            
+            <p class="max-w-2xl text-lg text-slate leading-relaxed mb-10">
+                I'm a first-year Engineering student specializing in AI/ML at <span class="text-slate-lighter font-semibold">RVITM in Bengaluru</span>. 
+                My interests span across <span class="text-orange font-medium">artificial intelligence</span>, video editing, food vlogging, and online math tutoring. I love combining creativity with technical problem-solving.
+            </p>
+            
+            <div class="flex flex-wrap gap-4">
+                <a href="#projects" class="px-7 py-4 bg-orange text-navy font-bold rounded-md hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20">
+                    Check out my work
+                </a>
+                <a href="https://github.com" target="_blank" class="px-7 py-4 border-2 border-slate-light text-slate-lighter font-bold rounded-md hover:border-orange hover:text-orange transition-colors flex items-center gap-2">
+                    <i class="fa-brands fa-github text-xl"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-navy-light px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-lighter mb-12 flex items-center after:content-[''] after:block after:h-[1px] after:w-48 md:after:w-96 after:bg-navy-lighter after:ml-6">
+                <span class="text-orange font-normal mr-2 text-xl">01.</span> My Skills
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- HTML & CSS -->
+                <div class="bg-navy p-6 rounded-lg border border-navy-lighter flex flex-col items-center justify-center hover:border-orange transition-colors group cursor-default">
+                    <i class="fa-brands fa-html5 text-5xl text-slate-light group-hover:text-[#E34F26] transition-colors mb-4"></i>
+                    <span class="font-semibold text-slate-lighter text-center">Basic HTML & CSS</span>
+                </div>
+                <!-- Python -->
+                <div class="bg-navy p-6 rounded-lg border border-navy-lighter flex flex-col items-center justify-center hover:border-orange transition-colors group cursor-default">
+                    <i class="fa-brands fa-python text-5xl text-slate-light group-hover:text-[#3776AB] transition-colors mb-4"></i>
+                    <span class="font-semibold text-slate-lighter">Python</span>
+                </div>
+                <!-- Video Editing -->
+                <div class="bg-navy p-6 rounded-lg border border-navy-lighter flex flex-col items-center justify-center hover:border-orange transition-colors group cursor-default">
+                    <i class="fa-solid fa-video text-5xl text-slate-light group-hover:text-[#FF0000] transition-colors mb-4"></i>
+                    <span class="font-semibold text-slate-lighter text-center">Video Editing</span>
+                </div>
+                <!-- GenAI Tools -->
+                <div class="bg-navy p-6 rounded-lg border border-navy-lighter flex flex-col items-center justify-center hover:border-orange transition-colors group cursor-default">
+                    <i class="fa-solid fa-brain text-5xl text-slate-light group-hover:text-orange transition-colors mb-4"></i>
+                    <span class="font-semibold text-slate-lighter text-center">GenAI Tools</span>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center text-slate">
+                <p>Constantly exploring new intersections of <span class="text-orange font-medium">media creation</span> and <span class="text-orange font-medium">machine learning</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-lighter mb-12 flex items-center after:content-[''] after:block after:h-[1px] after:w-48 md:after:w-96 after:bg-navy-lighter after:ml-6">
+                <span class="text-orange font-normal mr-2 text-xl">02.</span> Things I've Built
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="project-card bg-navy-light rounded-xl overflow-hidden border border-navy-lighter transition-all duration-300 flex flex-col h-full relative group">
+                    <div class="relative overflow-hidden h-48">
+                        <!-- Placeholder Image using placehold.co -->
+                        <img src="https://placehold.co/600x400/112240/ff8a00?text=Math+Tutoring+Hub" alt="Project 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-colors duration-300"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-4">
+                            <i class="fa-solid fa-chalkboard-user text-3xl text-orange"></i>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-slate hover:text-orange transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-lighter mb-3 group-hover:text-orange transition-colors">Online Math Tutoring Hub</h3>
+                        <p class="text-sm text-slate mb-6 flex-grow">
+                            An online initiative providing focused tutoring for Class 10 students. Dedicated to building core mathematical concepts and improving exam performance.
+                        </p>
+                        <div class="flex flex-wrap gap-3 text-xs font-mono text-slate-light mt-auto">
+                            <span>Education</span>
+                            <span>Teaching</span>
+                            <span>Math</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-navy-light rounded-xl overflow-hidden border border-navy-lighter transition-all duration-300 flex flex-col h-full relative group">
+                    <div class="relative overflow-hidden h-48">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/600x400/112240/ff8a00?text=Food+Vlogging" alt="Project 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-colors duration-300"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-4">
+                            <i class="fa-solid fa-utensils text-3xl text-orange"></i>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-slate hover:text-orange transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-lighter mb-3 group-hover:text-orange transition-colors">Food Vlogging Channel</h3>
+                        <p class="text-sm text-slate mb-6 flex-grow">
+                            A creative outlet where I handle end-to-end content creation, from shooting aesthetic food videos across Bengaluru to digital video editing.
+                        </p>
+                        <div class="flex flex-wrap gap-3 text-xs font-mono text-slate-light mt-auto">
+                            <span>Video Editing</span>
+                            <span>Content Creation</span>
+                            <span>Social Media</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-navy-light rounded-xl overflow-hidden border border-navy-lighter transition-all duration-300 flex flex-col h-full relative group">
+                    <div class="relative overflow-hidden h-48">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/600x400/112240/ff8a00?text=AI/ML+Studies" alt="Project 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-colors duration-300"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-4">
+                            <i class="fa-solid fa-robot text-3xl text-orange"></i>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-slate hover:text-orange transition-colors"><i class="fa-solid fa-certificate text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-lighter mb-3 group-hover:text-orange transition-colors">AI/ML Certifications</h3>
+                        <p class="text-sm text-slate mb-6 flex-grow">
+                            Continuously upskilling in the AI domain. Completed Google Skills 'Introduction to Generative AI' and hold an AI tool certification from be10x.
+                        </p>
+                        <div class="flex flex-wrap gap-3 text-xs font-mono text-slate-light mt-auto">
+                            <span>GenAI</span>
+                            <span>Google Skills</span>
+                            <span>be10x</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-navy-light px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-orange font-normal text-lg mb-4 tracking-wide">03. What's Next?</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-lighter mb-6">Get In Touch</h2>
+            <p class="text-slate mb-12 text-lg">
+                I'm currently looking for new opportunities to learn and collaborate. Whether you have a question about AI/ML, need help with Class 10 Math, or just want to say hi, I'll try my best to get back to you!
+            </p>
+            
+            <form class="text-left space-y-6 bg-navy p-8 rounded-xl border border-navy-lighter shadow-lg" onsubmit="event.preventDefault(); alert('In a real site, this would send an email! Thanks for testing.');">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="name" class="block text-sm font-medium text-slate-light">Name</label>
+                        <input type="text" id="name" required class="w-full bg-navy-light border border-navy-lighter rounded-md px-4 py-3 text-slate-lighter focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange transition-colors" placeholder="Your Name">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="block text-sm font-medium text-slate-light">Email</label>
+                        <input type="email" id="email" required class="w-full bg-navy-light border border-navy-lighter rounded-md px-4 py-3 text-slate-lighter focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange transition-colors" placeholder="your.email@example.com">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="message" class="block text-sm font-medium text-slate-light">Message</label>
+                    <textarea id="message" rows="5" required class="w-full bg-navy-light border border-navy-lighter rounded-md px-4 py-3 text-slate-lighter focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange transition-colors resize-none" placeholder="Hello Sumedh, I'd like to talk about..."></textarea>
+                </div>
+                <button type="submit" class="w-full py-4 bg-orange text-navy font-bold rounded-md hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20 text-lg">
+                    Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center bg-navy px-4 border-t border-navy-lighter">
+        <div class="flex justify-center space-x-6 mb-6 md:hidden">
+            <!-- Mobile Social Links -->
+            <a href="#" class="text-slate hover:text-orange text-2xl transition-colors"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="text-slate hover:text-orange text-2xl transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" class="text-slate hover:text-orange text-2xl transition-colors"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <a href="https://github.com" target="_blank" class="text-sm font-mono text-slate hover:text-orange transition-colors">
+            Designed & Built by Sumedh <br class="sm:hidden"> (CS Student, Bengaluru)
+        </a>
+    </footer>
+
+    <!-- Fixed Social Links (Desktop) -->
+    <div class="hidden md:flex flex-col fixed left-8 bottom-0 items-center space-y-6 after:content-[''] after:w-[1px] after:h-24 after:bg-slate after:mt-6">
+        <a href="#" class="text-slate hover:text-orange hover:-translate-y-1 transition-all duration-300 text-xl"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="text-slate hover:text-orange hover:-translate-y-1 transition-all duration-300 text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" class="text-slate hover:text-orange hover:-translate-y-1 transition-all duration-300 text-xl"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+
+    <!-- Fixed Email Link (Desktop) -->
+    <div class="hidden md:flex flex-col fixed right-8 bottom-0 items-center after:content-[''] after:w-[1px] after:h-24 after:bg-slate after:mt-6">
+        <a href="mailto:hello@example.com" class="text-slate hover:text-orange hover:-translate-y-1 transition-all duration-300 text-sm font-mono tracking-widest [writing-mode:vertical-rl] mb-6">
+            hello@example.com
+        </a>
+    </div>
+
+    <!-- JavaScript for Mobile Menu & Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const icon = btn.querySelector('i');
+
+            // Toggle Mobile Menu
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+
+            // Close Mobile Menu on Link Click
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Optional: Form submit handler override to prevent default alert logic in strict environments
+            // Instead of inline onsubmit, we can handle it here cleanly.
+            const form = document.querySelector('form');
+            if (form) {
+                form.onsubmit = function(e) {
+                    e.preventDefault();
+                    
+                    // Simple custom message box logic instead of alert()
+                    const btn = form.querySelector('button[type="submit"]');
+                    const originalText = btn.innerHTML;
+                    
+                    btn.innerHTML = 'Message Sent! <i class="fa-solid fa-check ml-2"></i>';
+                    btn.classList.add('bg-green-600', 'text-white');
+                    btn.classList.remove('bg-orange', 'text-navy');
+                    
+                    form.reset();
+
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.remove('bg-green-600', 'text-white');
+                        btn.classList.add('bg-orange', 'text-navy');
+                    }, 3000);
+                };
+            }
+        });
+    </script>
+</body>
+</html>
